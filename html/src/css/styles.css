@@ -1,0 +1,104 @@
+html, body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom right, #1e5799, #2989d8);
+}
+
+.container {
+    display: flex;
+    max-width: 75%;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.btn {
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 16px 32px;
+}
+
+.btn.btn-purple {
+    background: linear-gradient(to bottom, #7d2cab 5%, #9412e0 100%);
+	background-color: #7d2cab;
+    border: 1px solid #7d2cab;
+    color: white;
+}
+
+.btn.btn-purple:hover {
+	background: linear-gradient(to bottom, #9412e0 5%, #7d2cab 100%);
+	background-color: #9412e0;
+}
+
+/************ user card ************/
+
+.user-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 20px auto;
+    overflow: hidden;
+    min-width: 600px;
+}
+
+.user-info {
+    display: flex;
+    position: relative;
+    background-color: black;
+}
+
+.user-info .user-picture {
+    max-height: 300px;
+    margin: auto;
+    width: auto;
+}
+
+.user-info .user-details {
+    position: absolute;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+
+.user-info .user-details h1 {
+    text-transform: uppercase;
+    font-size: 1em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.user-info .user-details span {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.user-about {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+}
+
+.user-description {
+    max-width: 440px;
+    text-align: left;
+    color: #777;
+    margin: 20px 0;
+}
+
+.user-repo-btn {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: 100%;
+    }
+    .user-card {
+        min-width: 200px;
+    }
+}
