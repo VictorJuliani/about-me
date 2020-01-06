@@ -1,0 +1,13 @@
+.user-about {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+
+    .user-description {
+        max-width: 440px;
+        text-align: left;
+        color: #777;
+        margin: 20px 0;
+    }
+}
