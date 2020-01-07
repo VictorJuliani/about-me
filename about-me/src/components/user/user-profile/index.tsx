@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Redirect } from 'react-router';
 import { connect } from 'react-redux';
+import { Card } from 'antd';
 import { UsersState, getUser } from '../../../store';
 import UserInfo from '../user-info';
 import UserAbout from '../user-about';
@@ -16,10 +17,10 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
         ? <Redirect to="/" />
         : (
             <div className="container">
-                <div className="user-card">
+                <Card className="user-card">
                     <UserInfo user={user} />
                     <UserAbout user={user} />
-                </div>
+                </Card>
             </div>
         )
 }
