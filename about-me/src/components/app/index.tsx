@@ -1,30 +1,45 @@
 import React from 'react';
-import UserInfo from '../user/user-info';
-import UserAbout from '../user/user-about';
-import { User } from '../../models';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+} from "react-router-dom";
+import { Provider } from 'react-redux';
+import { store } from '../../store';
+import UserList from '../user/user-list';
+import UserCreate from '../user/user-create';
+import UserProfile from '../user/user-profile';
 import './styles.scss';
-
-const user: User = {
-	name: 'Victor Juliani',
-	job: 'Software Engineer and Web Developer in São Carlos, SP, Brasil',
-	description: `
-		Greetings, I’m Victor. I’m a software engineer living in São Carlos, SP, Brasil.
-		I am a fan of technology, design, and web development.
-		I’m also interested in movies and sports.
-		You can view my repo with a click on the button above.
-	`,
-	repo: 'https://github.com/VictorJuliani/about-me',
-	imgs: [ '/img/user.png', '/img/user2.png', '/img/user3.png' ]
-}
 
 const App: React.FC = () => {
 	return (
-		<div className="container">
-			<div className="user-card">
-				<UserInfo user={user} />
-				<UserAbout user={user} />
-			</div>
-		</div>
+        <Provider store={store}>
+			<Router>
+				<div>
+					<nav>
+						<ul>
+							<li><Link to="/users/new">New User</Link></li>
+							<li><Link to="/">Users</Link></li>
+						</ul>
+					</nav>
+	
+					{/* A <Switch> looks through its children <Route>s and
+					renders the first one that matches the current URL. */}
+					<Switch>
+						<Route path="/users/new">
+							<UserCreate />
+						</Route>
+						<Route path="/users/:userId">
+							<UserProfile />
+						</Route>
+						<Route path="*">
+							<UserList />
+						</Route>
+					</Switch>
+				</div>
+			</Router>
+		</Provider>
 	)
 }
 

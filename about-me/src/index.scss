@@ -6,7 +6,8 @@ $bg-end-color: #2989d8;
 html, body {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(to bottom right, $bg-start-color, $bg-end-color);
+  // background: linear-gradient(to bottom right, $bg-start-color, $bg-end-color);
+  background: #eee;
 }
 
 // body {
