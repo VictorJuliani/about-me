@@ -1,7 +1,7 @@
 import React from 'react';
 import UserPicture from '../user-picture';
 import UserDetails from '../user-details';
-import { Carousel } from '../../carousel';
+import { Carousel } from '../../widgets/carousel';
 import { User } from '../../../models';
 import './styles.scss';
 
@@ -19,6 +19,7 @@ export default class UserInfo extends React.Component<UserInfoProps> {
                         this.props.user.imgs.map(img =>
                             <UserPicture
                                 className="user-picture"
+                                key={img}
                                 img={img}
                                 alt="User Picture"
                             />

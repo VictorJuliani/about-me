@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../button';
+import Button from '../../widgets/button';
 import styles from './styles.module.scss';
 
 interface UserRepoProps {
