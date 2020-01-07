@@ -2,6 +2,6 @@ export interface User {
     name: string;
     job: string;
     description: string;
-    img: string;
+    imgs: string[];
     repo: string;
 }

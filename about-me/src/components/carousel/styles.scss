@@ -1,0 +1,24 @@
+.carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+
+    &__btn {
+        flex: 0 1 10%;
+        background: rgba(200, 200, 200, 0.1);
+        background-color: rgba(200, 200, 200, 0.1);
+        border: none;
+        font-size: 2em;
+        color: white;
+        cursor: pointer;
+        outline: none;
+
+        &:disabled {
+            color: gray;
+        }
+    }
+
+    &__payload {
+        flex: 1 1 auto;
+    }
+}

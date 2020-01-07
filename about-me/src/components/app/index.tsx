@@ -14,7 +14,7 @@ const user: User = {
 		You can view my repo with a click on the button above.
 	`,
 	repo: 'https://github.com/VictorJuliani/about-me',
-	img: '/img/user.png',
+	imgs: [ '/img/user.png', '/img/user2.png', '/img/user3.png' ]
 }
 
 const App: React.FC = () => {

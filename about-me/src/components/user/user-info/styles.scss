@@ -3,7 +3,13 @@
     position: relative;
     background-color: black;
 
+    .carousel {
+        flex: 1;
+        overflow: hidden;
+    }
+
     .user-picture {
+        display: block;
         max-height: 300px;
         margin: auto;
         width: auto;
