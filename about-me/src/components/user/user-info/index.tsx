@@ -19,7 +19,7 @@ export default class UserInfo extends React.Component<UserInfoProps> {
                         this.props.user.imgs.map(img =>
                             <UserPicture
                                 className="user-picture"
-                                key={img}
+                                key={img.slice(0, 20)}
                                 img={img}
                                 alt="User Picture"
                             />

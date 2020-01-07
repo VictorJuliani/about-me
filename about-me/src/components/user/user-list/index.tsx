@@ -31,11 +31,11 @@ class UserList extends React.Component<UserListProps> {
                 renderItem={user => (
                     <Link to={`/users/${user.id}`}>
                         <List.Item>
-                                <List.Item.Meta
-                                    avatar={<Avatar src={user.imgs && user.imgs.length ? user.imgs[0] : placeholder} />}
-                                    title={user.name}
-                                    description={user.job}
-                                    />
+                            <List.Item.Meta
+                                avatar={<Avatar src={user.imgs && user.imgs.length ? user.imgs[0] : placeholder} />}
+                                title={user.name}
+                                description={user.job}
+                            />
                         </List.Item>
                     </Link>
                 )}
