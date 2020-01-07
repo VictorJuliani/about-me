@@ -10,8 +10,9 @@ import {
 } from 'antd';
 import { SelectValue } from 'antd/lib/select';
 import { FormComponentProps } from 'antd/lib/form';
-import { NewUser } from '../../../models';
+import PicturesWall from '../../widgets/picture-wall';
 import { addUser } from '../../../store';
+import { NewUser } from '../../../models';
 import './styles.scss';
 
 const AutoCompleteOption = AutoComplete.Option;
@@ -30,10 +31,11 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 		e.preventDefault();
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
+				const imgs = values.imgs.map((img: any) => img['thumbUrl']);
 				const newUser: NewUser = {
-					...values,
-					imgs: []
+					...values, imgs
 				};
+
 				this.props.create(newUser);
 				this.setState({ redirectToNewPage: true });
 			}
@@ -99,7 +101,6 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 							rules: [{ required: true, message: 'Please input user description.' }],
 						})(<Input />)}
 					</Form.Item>
-					{/* TODO: imgs */}
 					<Form.Item label="Repository">
 						{getFieldDecorator('repo', {
 							rules: [{ required: true, message: 'Please input user website.' }],
@@ -112,6 +113,11 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 								<Input />
 							</AutoComplete>,
 						)}
+					</Form.Item>
+					<Form.Item label="User Images">
+						{getFieldDecorator('imgs', {
+							valuePropName: 'fileList',
+						})(<PicturesWall />)}
 					</Form.Item>
 					<Form.Item {...tailFormItemLayout}>
 						<Button type="primary" htmlType="submit">
