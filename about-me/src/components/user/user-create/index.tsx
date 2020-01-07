@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import {
 	Form,
 	Input,
@@ -21,6 +22,7 @@ interface UserCreateProps {
 class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 	state = {
 		confirmDirty: false,
+		redirectToNewPage: false,
 		autoCompleteResult: []
 	};
 	
@@ -33,6 +35,7 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 					imgs: []
 				};
 				this.props.create(newUser);
+				this.setState({ redirectToNewPage: true });
 			}
 		});
 	};
@@ -49,7 +52,7 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 
 	render() {
 		const { getFieldDecorator } = this.props.form;
-		const { autoCompleteResult } = this.state;
+		const { autoCompleteResult, redirectToNewPage } = this.state;
 	
 		const formItemLayout = {
 			labelCol: {
@@ -78,7 +81,7 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 			<AutoCompleteOption key={website}>{website}</AutoCompleteOption>
 		));
 
-		return (
+		const userForm = (
 			<Card className="user-create" style={{margin: 'auto'}}>
 				<Form {...formItemLayout} onSubmit={this.handleSubmit}>
 					<Form.Item label="Name">
@@ -117,7 +120,11 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 					</Form.Item>
 				</Form>
 			</Card>
-		)
+		);
+
+		return redirectToNewPage
+			? <Redirect to="/" />
+			: userForm;
 	}
 }
 
