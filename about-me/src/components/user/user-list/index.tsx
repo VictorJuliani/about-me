@@ -30,7 +30,7 @@ class UserList extends React.Component<UserListProps> {
                 dataSource={users}
                 renderItem={user => (
                     <Link to={`/users/${user.id}`}>
-                        <List.Item>
+                        <List.Item actions={[<span>Likes: {user.likes}</span>]}>
                             <List.Item.Meta
                                 avatar={<Avatar src={user.imgs && user.imgs.length ? user.imgs[0] : placeholder} />}
                                 title={user.name}
