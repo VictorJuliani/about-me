@@ -1,6 +1,5 @@
 import React from 'react';
-import UserRepo from '../user-repo';
-import UserDescription from '../user-description';
+import Button from '../../widgets/button';
 import { User } from '../../../models';
 import './styles.scss';
 
@@ -14,11 +13,14 @@ export default class UserAbout extends React.Component<UserAboutProps> {
         return (
             <div className="user-about">
                 <div>
-                    <UserRepo repo={this.props.user.repo} />
-                    <UserDescription
-                        className="user-description"
-                        description={this.props.user.description}
-                    />
+                    <a href={this.props.user.repo} target="_blank" rel="noopener noreferrer">
+                        <Button className='btn-purple user-repo-btn'>
+                            &lt;/&gt; View my repo
+                        </Button>
+                    </a>
+                    <p className="user-description">
+                        {this.props.user.description}
+                    </p>
                 </div>
             </div>
         )
