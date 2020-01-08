@@ -1,6 +1,5 @@
 import React from 'react';
 import UserPicture from '../user-picture';
-import UserDetails from '../user-details';
 import { Carousel } from '../../widgets/carousel';
 import { User } from '../../../models';
 import './styles.scss';
@@ -26,11 +25,10 @@ export default class UserInfo extends React.Component<UserInfoProps> {
                         )
                     }
                 </Carousel>
-                <UserDetails
-                    className="user-details"
-                    name={this.props.user.name}
-                    job={this.props.user.job}
-                />
+                <div className="user-details">
+                    <h1 className="user-name">{this.props.user.name}</h1>
+                    <span className="user-job">{this.props.user.job}</span>
+                </div>
             </div>
         )
     }
