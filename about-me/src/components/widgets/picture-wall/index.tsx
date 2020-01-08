@@ -26,7 +26,7 @@ export default class PicturesWall extends React.Component<PicturesWallProps> {
     constructor(props: PicturesWallProps) {
         super(props);
         if (this.props.fileList) {
-            this.state.fileList = this.props.fileList;
+            this.state.fileList = this.props.fileList || [];
         }
     }
 

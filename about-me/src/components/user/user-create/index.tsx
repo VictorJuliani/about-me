@@ -31,7 +31,9 @@ class UserCreate extends React.Component<FormComponentProps & UserCreateProps> {
 		e.preventDefault();
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
-				const imgs = values.imgs.map((img: any) => img['thumbUrl']);
+				const imgs = values.imgs
+					? values.imgs.map((img: any) => img['thumbUrl'])
+					: [];
 				const newUser: NewUser = {
 					...values, imgs
 				};
