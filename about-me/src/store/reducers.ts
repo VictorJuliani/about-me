@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { User } from "../models";
-import { ADD_USER, UPDATE_USER, UserAction } from "./actions";
+import { User, NewUser } from "../models";
+import { ADD_USER, UPDATE_USER, UserAction, LIKE_USER } from "./actions";
 
 let nextUserId = 1;
 export type UsersState = Readonly<{
@@ -18,7 +18,8 @@ const user: User = {
 		You can view my repo with a click on the button above.
 	`,
 	repo: 'https://github.com/VictorJuliani/about-me',
-	imgs: [ '/img/user.png', '/img/user2.png', '/img/user3.png' ]
+    imgs: [ '/img/user.png', '/img/user2.png', '/img/user3.png' ],
+    likes: Math.floor(Math.random() * 100)
 };
 
 const initialState: UsersState = {
@@ -29,9 +30,11 @@ export default combineReducers<UsersState, UserAction>({
     users: (state = initialState.users, action: UserAction) => {
         switch (action.type) {
             case ADD_USER:
-                const user = {
-                    ...action.payload,
-                    id: nextUserId++
+                const newUser: NewUser = action.payload;
+                const user: User = {
+                    ...newUser,
+                    id: nextUserId++,
+                    likes: Math.floor(Math.random() * 100)
                 };
                 return [ ...state, user ];
 
@@ -39,6 +42,18 @@ export default combineReducers<UsersState, UserAction>({
                 return state.map(user =>
                     user.id === action.payload.id ? action.payload : user
                 );
+
+            case LIKE_USER:
+                const userIndex = state.findIndex(user => user.id === action.payload.id);
+                if (userIndex >= 0) {
+                    const likedUser: User = {
+                        ...state[userIndex],
+                        likes: state[userIndex].likes + 1,
+                    }
+
+                    return Object.assign([], state, { [userIndex]: likedUser });
+                }
+                return state;
 
             default:
                 return state;
